@@ -1,9 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  background-color: aliceblue;
+  box-sizing: border-box;
 }
 
 .calculator-body {
@@ -17,4 +24,45 @@ body {
   width: 500px;
   height: 200px;
   margin: 25px;
+}
+
+.operators-pad {
+  display: flex;
+  flex-direction: column;
+}
+
+.keyboard {
+  display: flex;
+  margin-bottom: 25px;
+  justify-content: center;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+  border: none;
+  border-radius: 12%;
+  background-color: cadetblue;
+  cursor: pointer;
+}
+
+.upper-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 15px;
+}
+
+.row-1, .row-2, .row-3, .row-4 {
+  margin: 5px;
+}
+
+#plus, #minus, #divide, #times {
+  margin: 5px;
+}
+
+.numbers-pad {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-right: 10px;
 }
