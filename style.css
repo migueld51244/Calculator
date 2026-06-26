@@ -1,0 +1,20 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.calculator-body {
+  border: 2px solid black;
+}
+
+.screen {
+  background-color: grey;
+  border: 1px solid darkgrey;
+  border-radius: 15px;
+  width: 500px;
+  height: 200px;
+  margin: 25px;
+}
