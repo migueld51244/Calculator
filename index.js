@@ -92,3 +92,5 @@ function clearStoredNumbers() {
   operator = '';
   currentNumber = '';
 }
+
+// to add concatenation, store the result in a varialbe and keep onking on it
