@@ -62,3 +62,20 @@ function handleDivide() {
   let calculation = storedNumber / currentNumber;
   document.querySelector(".screen").innerHTML = calculation;
 }
+
+// Get ENTER button
+const enterBTN = document.querySelector("#enter");
+
+// Add interaction to ENTER BTN
+enterBTN.addEventListener("click", () => {
+  if(opr === '+') {
+    handleSum();
+  } else if(opr === '-') {
+    handleSubtract();
+  } else if(opr === '*') {
+    handleMultiplication();
+  } else if (opr === '/') {
+    handleDivide();
+  }
+}
+);
