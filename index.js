@@ -1,6 +1,7 @@
 let currentNumber = '';
 let storedNumber = '';
 let isOperatorClicked = false;
+let operator = '';
 
 
 // Get numbers
@@ -39,8 +40,11 @@ function handleOperator(opr) {
   storedNumber = currentNumber;
   currentNumber = '';
   document.querySelector(".screen").innerText += opr;
+  operator = opr;
   return opr;
 }
+
+
 
 // Functions to handle operations
 function handleSum() {
@@ -68,13 +72,13 @@ const enterBTN = document.querySelector("#enter");
 
 // Add interaction to ENTER BTN
 enterBTN.addEventListener("click", () => {
-  if(opr === '+') {
+  if(operator === '+') {
     handleSum();
-  } else if(opr === '-') {
+  } else if(operator === '-') {
     handleSubtract();
-  } else if(opr === '*') {
+  } else if(operator === '*') {
     handleMultiplication();
-  } else if (opr === '/') {
+  } else if (operator === '/') {
     handleDivide();
   }
 }
