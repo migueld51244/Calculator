@@ -41,7 +41,6 @@ function handleOperator(opr) {
   currentNumber = '';
   document.querySelector(".screen").innerText += opr;
   operator = opr;
-  return opr;
 }
 
 
