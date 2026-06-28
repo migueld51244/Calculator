@@ -1,4 +1,6 @@
 let currentNumber = '';
+let storedNumber = '';
+let isOperatorClicked = false;
 
 
 // Get numbers
@@ -25,16 +27,38 @@ function getNum(num){
 document.querySelector("#clear").addEventListener("click", () => 
   document.querySelector(".screen").innerHTML = "");
 
-// Operators
-/*
-  IDs: plus, minus, times, divide
-*/
 
+// Get operators
 document.getElementById("plus").addEventListener("click", () => handleOperator("+"));
 document.getElementById("minus").addEventListener("click", () => handleOperator("-"));
 document.getElementById("times").addEventListener("click", () => handleOperator("*"));
 document.getElementById("divide").addEventListener("click", () => handleOperator("/"));
 
-function handleOperator() {
 
+function handleOperator(opr) {
+  storedNumber = currentNumber;
+  currentNumber = '';
+  document.querySelector(".screen").innerText += opr;
+  return opr;
+}
+
+// Functions to handle operations
+function handleSum() {
+  let calculation = storedNumber + currentNumber;
+  document.querySelector(".screen").innerHTML = calculation;
+}
+
+function handleSubtract() {
+  let calculation = storedNumber - currentNumber;
+  document.querySelector(".screen").innerHTML = calculation;
+}
+
+function handleMultiplication() {
+  let calculation = storedNumber * currentNumber;
+  document.querySelector(".screen").innerHTML = calculation;
+}
+
+function handleDivide() {
+  let calculation = storedNumber / currentNumber;
+  document.querySelector(".screen").innerHTML = calculation;
 }
