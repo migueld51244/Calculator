@@ -64,7 +64,7 @@ function handleMultiplication() {
 
 function handleDivide() {
   let calculation = storedNumber / currentNumber;
-  document.querySelector(".screen").innerHTML = calculation;
+  document.querySelector(".screen").innerText = calculation;
 }
 
 // Get ENTER button
