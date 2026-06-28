@@ -48,22 +48,22 @@ function handleOperator(opr) {
 
 // Functions to handle operations
 function handleSum() {
-  let calculation = Number(storedNumber + currentNumber);
+  let calculation = Number(storedNumber) + Number(currentNumber);
   document.querySelector(".screen").innerHTML = calculation;
 }
 
 function handleSubtract() {
-  let calculation = Number(storedNumber - currentNumber);
+  let calculation = Number(storedNumber) - Number(currentNumber);
   document.querySelector(".screen").innerHTML = calculation;
 }
 
 function handleMultiplication() {
-  let calculation = Number(storedNumber * currentNumber);
+  let calculation = Number(storedNumber) * Number(currentNumber);
   document.querySelector(".screen").innerHTML = calculation;
 }
 
 function handleDivide() {
-  let calculation = Number(storedNumber / currentNumber);
+  let calculation = Number(storedNumber) / Number(currentNumber);
   document.querySelector(".screen").innerText = calculation;
 }
 
