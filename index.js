@@ -74,12 +74,22 @@ const enterBTN = document.querySelector("#enter");
 enterBTN.addEventListener("click", () => {
   if(operator === '+') {
     handleSum();
+    clearStoredNumbers();
   } else if(operator === '-') {
     handleSubtract();
+    clearStoredNumbers();
   } else if(operator === '*') {
     handleMultiplication();
+    clearStoredNumbers();
   } else if (operator === '/') {
     handleDivide();
+    clearStoredNumbers();
   }
 }
 );
+
+function clearStoredNumbers() {
+  storedNumber = '';
+  operator = '';
+  currentNumber = '';
+}
