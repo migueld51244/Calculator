@@ -25,8 +25,11 @@ function getNum(num){
 }
 
 // Clear Screen
-document.querySelector("#clear").addEventListener("click", () => 
-  document.querySelector(".screen").innerHTML = "");
+document.querySelector("#clear").addEventListener("click", () => {
+  document.querySelector(".screen").innerHTML = "";
+  clearStoredNumbers();
+});
+  
 
 
 // Get operators
