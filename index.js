@@ -113,6 +113,8 @@ function clearStoredNumbers() {
   currentNumber = '';
 }
 
+
+// Code to handle dot button
 document.getElementById("dot").addEventListener("click", () => {
   if(isDecimalPointEntered === true) {
     return
@@ -122,4 +124,12 @@ document.getElementById("dot").addEventListener("click", () => {
     currentNumber += '.';
   }
 });
+
+// Code to handle delete button
+document.getElementById("delete").addEventListener("click", () => {
+  let shortenedString = document.querySelector(".screen").textContent.slice(0, -1);
+  document.querySelector(".screen").innerText = shortenedString;
+});
+
+
 // to add concatenation, store the result in a varialbe and keep onking on it
