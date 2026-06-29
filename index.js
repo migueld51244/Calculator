@@ -2,6 +2,7 @@ let currentNumber = '';
 let storedNumber = '';
 let isOperatorClicked = false;
 let operator = '';
+let isDecimalPointEntered = false;
 
 
 // Get numbers
@@ -33,10 +34,22 @@ document.querySelector("#clear").addEventListener("click", () => {
 
 
 // Get operators
-document.getElementById("plus").addEventListener("click", () => handleOperator("+"));
-document.getElementById("minus").addEventListener("click", () => handleOperator("-"));
-document.getElementById("times").addEventListener("click", () => handleOperator("*"));
-document.getElementById("divide").addEventListener("click", () => handleOperator("/"));
+document.getElementById("plus").addEventListener("click", () => {
+  handleOperator("+")
+  isDecimalPointEntered = false;
+});
+document.getElementById("minus").addEventListener("click", () => {
+  handleOperator("-")
+  isDecimalPointEntered = false;
+});
+document.getElementById("times").addEventListener("click", () => {
+  handleOperator("*")
+  isDecimalPointEntered = false;
+});
+document.getElementById("divide").addEventListener("click", () => {
+  handleOperator("/")
+  isDecimalPointEntered = false;
+});
 
 
 function handleOperator(opr) {
@@ -90,6 +103,7 @@ enterBTN.addEventListener("click", () => {
     handleDivide();
     clearStoredNumbers();
   }
+  isDecimalPointEntered = false;
 }
 );
 
@@ -99,5 +113,13 @@ function clearStoredNumbers() {
   currentNumber = '';
 }
 
-
+document.getElementById("dot").addEventListener("click", () => {
+  if(isDecimalPointEntered === true) {
+    return
+  } else {
+    isDecimalPointEntered = true;
+    document.querySelector(".screen").innerText += '.';
+    currentNumber += '.';
+  }
+});
 // to add concatenation, store the result in a varialbe and keep onking on it
