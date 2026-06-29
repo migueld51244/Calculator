@@ -80,7 +80,10 @@ enterBTN.addEventListener("click", () => {
   } else if(operator === '*') {
     handleMultiplication();
     clearStoredNumbers();
-  } else if (operator === '/') {
+  } else if (operator === '/' && currentNumber === '0') {
+    document.querySelector(".screen").innerText = 'ERROR: Cannot divide by 0'
+    clearStoredNumbers();
+  } else if(operator === '/') {
     handleDivide();
     clearStoredNumbers();
   }
@@ -92,5 +95,6 @@ function clearStoredNumbers() {
   operator = '';
   currentNumber = '';
 }
+
 
 // to add concatenation, store the result in a varialbe and keep onking on it
