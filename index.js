@@ -1,6 +1,6 @@
 let currentNumber = '';
 let storedNumber = '';
-let isOperatorClicked = false;
+let isResultDisplayed = true;
 let operator = '';
 let isDecimalPointEntered = false;
 
@@ -104,6 +104,7 @@ enterBTN.addEventListener("click", () => {
     clearStoredNumbers();
   }
   isDecimalPointEntered = false;
+  isResultDisplayed = true;
 }
 );
 
@@ -127,8 +128,7 @@ document.getElementById("dot").addEventListener("click", () => {
 
 // Code to handle delete button
 document.getElementById("delete").addEventListener("click", () => {
-  let shortenedString = document.querySelector(".screen").textContent.slice(0, -1);
-  document.querySelector(".screen").innerText = shortenedString;
+
 });
 
 
