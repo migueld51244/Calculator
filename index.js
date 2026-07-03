@@ -1,8 +1,9 @@
 let currentNumber = '';
 let storedNumber = '';
-let isResultDisplayed = true;
+let isResultDisplayed = false;
 let operator = '';
 let isDecimalPointEntered = false;
+let firstTimeOpr = true;
 
 
 // Get numbers
@@ -20,6 +21,7 @@ document.getElementById("nine").addEventListener("click", () => getNum("9"));
 
 
 function getNum(num){
+  isResultDisplayed = false;
   currentNumber += num;
   document.querySelector(".screen").innerText += num;
   return Number(currentNumber);
@@ -53,7 +55,11 @@ document.getElementById("divide").addEventListener("click", () => {
 
 
 function handleOperator(opr) {
-  storedNumber = currentNumber;
+  if(firstTimeOpr === true) {
+    storedNumber = currentNumber;
+    firstTimeOpr = false;
+  }
+
   currentNumber = '';
   document.querySelector(".screen").innerText += opr;
   operator = opr;
@@ -105,6 +111,7 @@ enterBTN.addEventListener("click", () => {
   }
   isDecimalPointEntered = false;
   isResultDisplayed = true;
+  firstTimeOpr = true;
 }
 );
 
@@ -128,8 +135,37 @@ document.getElementById("dot").addEventListener("click", () => {
 
 // Code to handle delete button
 document.getElementById("delete").addEventListener("click", () => {
+  let screenContent = document.querySelector(".screen").innerText;
 
+  let lastChar = screenContent[screenContent.length -1];
+
+  if(isResultDisplayed === true) {
+    isResultDisplayed = false;
+    document.querySelector(".screen").innerText = "";
+    clearStoredNumbers();
+  } else if(lastChar === ".") {
+    isDecimalPointEntered = false;
+    let sliced = currentNumber.slice(0, -1);
+    currentNumber = sliced;
+  } else if(currentNumber !== "" && "0123456789".includes(lastChar)) {
+    let sliced = currentNumber.slice(0, -1);
+    currentNumber = sliced;
+  } else if(storedNumber !== "" && "0123456789".includes(lastChar)) {
+    let sliced = storedNumber.slice(0, -1);
+    storedNumber = sliced;
+  } else if(currentNumber === "" && operator !== "") {
+    operator = "";
+  }
+  removeItemFromScreen();
+  console.log(storedNumber);
+  console.log(operator);
+  console.log(currentNumber);
 });
+
+function removeItemFromScreen() {
+  let currentText = document.querySelector(".screen").innerText;
+  document.querySelector(".screen").innerText = currentText.slice(0, -1);
+}
 
 
 // to add concatenation, store the result in a varialbe and keep onking on it
