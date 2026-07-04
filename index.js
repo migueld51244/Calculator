@@ -55,14 +55,30 @@ document.getElementById("divide").addEventListener("click", () => {
 
 
 function handleOperator(opr) {
-  if(firstTimeOpr === true) {
+  let calc;
+  if(operator === ""){
     storedNumber = currentNumber;
-    firstTimeOpr = false;
+    operator = opr;
+    currentNumber = "";
+    document.querySelector(".screen").innerText += opr;
+  } else if(operator !== "" && currentNumber !== ""){
+    if(operator === "+"){
+      calc = storedNumber + currentNumber;
+    } else if(operator === "-") {
+      calc = storedNumber - currentNumber      ;
+    } else if(operator === "*") {
+      calc = storedNumber * currentNumber;
+    } else if(operator === "/") {
+      calc = storedNumber / currentNumber;
+    }
+    document.querySelector(".screen").innerText = calc;
+    storedNumber = calc;
+    operator = opr;
+    currentNumber = "";
+    document.querySelector(".screen").innerText += opr;
+  } else if(operator !== "" && currentNumber === ""){
+    operator = opr;
   }
-
-  currentNumber = '';
-  document.querySelector(".screen").innerText += opr;
-  operator = opr;
 }
 
 
@@ -112,6 +128,8 @@ enterBTN.addEventListener("click", () => {
   isDecimalPointEntered = false;
   isResultDisplayed = true;
   firstTimeOpr = true;
+  let result = document.querySelector(".screen").innerText;
+  storedNumber = result;
 }
 );
 
@@ -166,6 +184,3 @@ function removeItemFromScreen() {
   let currentText = document.querySelector(".screen").innerText;
   document.querySelector(".screen").innerText = currentText.slice(0, -1);
 }
-
-
-// to add concatenation, store the result in a varialbe and keep onking on it
