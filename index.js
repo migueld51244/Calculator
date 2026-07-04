@@ -4,6 +4,7 @@ let isResultDisplayed = false;
 let operator = "";
 let isDecimalPointEntered = false;
 let firstTimeOpr = true;
+let isErrorDisplayed = false;
 const screen = document.querySelector(".screen");
 
 // Get numbers
@@ -19,6 +20,7 @@ document.getElementById("eight").addEventListener("click", () => getNum("8"));
 document.getElementById("nine").addEventListener("click", () => getNum("9"));
 
 function getNum(num) {
+  errorHandler();
   isResultDisplayed = false;
   currentNumber += num;
   screen.innerText += num;
@@ -50,6 +52,7 @@ document.getElementById("divide").addEventListener("click", () => {
 });
 
 function handleOperator(opr) {
+  errorHandler();
   let calc;
   if (operator === "") {
     storedNumber = currentNumber;
@@ -90,8 +93,21 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  if(Number(b) === 0) return 'ERROR: Cannot divide by 0';
+  if(Number(b) === 0) {
+    isErrorDisplayed = true;
+    return 'ERROR: Cannot divide by 0';
+  }
   return Number(a) / Number(b);
+}
+
+// Error handler
+function errorHandler() {
+  if(isErrorDisplayed === true) {
+  // Clears all
+  clearStoredNumbers();
+  screen.innerText = "";
+  }
+  isErrorDisplayed = false;
 }
 
 function operate(operator, a, b) {
@@ -111,6 +127,7 @@ const enterBTN = document.querySelector("#enter");
 
 // Add interaction to ENTER BTN
 enterBTN.addEventListener("click", () => {
+  errorHandler();
   if (operator === "+") {
     let result = operate("+", storedNumber, currentNumber);
     screen.innerText = result;
@@ -136,9 +153,11 @@ enterBTN.addEventListener("click", () => {
     storedNumber = result;
     clearOprAndCurrentNum();
   }
+  if(isErrorDisplayed === false) {
   isDecimalPointEntered = false;
   isResultDisplayed = true;
   firstTimeOpr = true;
+  }
 });
 
 function clearStoredNumbers() {
@@ -154,6 +173,7 @@ function clearOprAndCurrentNum() {
 
 // Code to handle dot button
 document.getElementById("dot").addEventListener("click", () => {
+  errorHandler();
   if (isDecimalPointEntered === true) {
     return;
   } else {
@@ -165,6 +185,7 @@ document.getElementById("dot").addEventListener("click", () => {
 
 // Code to handle delete button
 document.getElementById("delete").addEventListener("click", () => {
+  errorHandler();
   let screenContent = screen.innerText;
 
   let lastChar = screenContent[screenContent.length - 1];
