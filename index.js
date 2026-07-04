@@ -115,14 +115,17 @@ enterBTN.addEventListener("click", () => {
     let result = operate("+", storedNumber, currentNumber);
     screen.innerText = result;
     storedNumber = result;
+    clearOprAndCurrentNum();
   } else if (operator === "-") {
     let result = operate("-", storedNumber, currentNumber);
     screen.innerText = result;
     storedNumber = result;
+    clearOprAndCurrentNum();
   } else if (operator === "*") {
     let result = operate("*", storedNumber, currentNumber);
     screen.innerText = result;
     storedNumber = result;
+    clearOprAndCurrentNum();
   } else if (operator === "/" && currentNumber === "0") {
     let result = operate("/", storedNumber, currentNumber);
     screen.innerText = result;
@@ -131,6 +134,7 @@ enterBTN.addEventListener("click", () => {
     let result = operate("/", storedNumber, currentNumber);
     screen.innerText = result;
     storedNumber = result;
+    clearOprAndCurrentNum();
   }
   isDecimalPointEntered = false;
   isResultDisplayed = true;
@@ -138,7 +142,12 @@ enterBTN.addEventListener("click", () => {
 });
 
 function clearStoredNumbers() {
-  //storedNumber = "";
+  storedNumber = "";
+  operator = "";
+  currentNumber = "";
+}
+
+function clearOprAndCurrentNum() {
   operator = "";
   currentNumber = "";
 }
