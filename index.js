@@ -77,20 +77,33 @@ function handleOperator(opr) {
 }
 
 // Functions to handle operations
-function add(storedNumber, currentNumber) {
-  return Number(storedNumber) + Number(currentNumber);
+function add(a, b) {
+  return Number(a) + Number(b);
 }
 
-function subtract(storedNumber, currentNumber) {
-  return Number(storedNumber) - Number(currentNumber);
+function subtract(a, b) {
+  return Number(a) - Number(b);
 }
 
-function multiply(storedNumber, currentNumber) {
-  return Number(storedNumber) * Number(currentNumber);
+function multiply(a, b) {
+  return Number(a) * Number(b);
 }
 
-function divide(storedNumber, currentNumber) {
-  return Number(storedNumber) / Number(currentNumber);
+function divide(a, b) {
+  if(Number(b) === 0) return 'ERROR: Cannot divide by 0';
+  return Number(a) / Number(b);
+}
+
+function operate(operator, a, b) {
+  if(operator === "+") {
+    return add(a, b);
+  } else if(operator === "-") {
+    return subtract(a, b);
+  } else if(operator === "*") {
+    return multiply(a, b);
+  } else if(operator === "/") {
+    return divide(a, b);
+  }
 }
 
 // Get ENTER button
