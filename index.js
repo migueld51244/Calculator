@@ -63,13 +63,13 @@ function handleOperator(opr) {
     document.querySelector(".screen").innerText += opr;
   } else if(operator !== "" && currentNumber !== ""){
     if(operator === "+"){
-      calc = storedNumber + currentNumber;
+      calc = Number(storedNumber)+ Number(currentNumber);
     } else if(operator === "-") {
-      calc = storedNumber - currentNumber      ;
+      calc = Number(storedNumber)- Number(currentNumber);
     } else if(operator === "*") {
-      calc = storedNumber * currentNumber;
+      calc = Number(storedNumber)* Number(currentNumber);
     } else if(operator === "/") {
-      calc = storedNumber / currentNumber;
+      calc = Number(storedNumber)/ Number(currentNumber);
     }
     document.querySelector(".screen").innerText = calc;
     storedNumber = calc;
