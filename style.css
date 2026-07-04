@@ -8,7 +8,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: aliceblue;
   box-sizing: border-box;
 }
@@ -53,11 +53,17 @@ button {
   margin-bottom: 15px;
 }
 
-.row-1, .row-2, .row-3, .row-4 {
+.row-1,
+.row-2,
+.row-3,
+.row-4 {
   margin: 5px;
 }
 
-#plus, #minus, #divide, #times {
+#plus,
+#minus,
+#divide,
+#times {
   margin: 5px;
 }
 
