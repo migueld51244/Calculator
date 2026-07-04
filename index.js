@@ -58,13 +58,13 @@ function handleOperator(opr) {
     screen.innerText += opr;
   } else if (operator !== "" && currentNumber !== "") {
     if (operator === "+") {
-      calc = Number(storedNumber) + Number(currentNumber);
+      calc = add(storedNumber, currentNumber);
     } else if (operator === "-") {
-      calc = Number(storedNumber) - Number(currentNumber);
+      calc = subtract(storedNumber, currentNumber);
     } else if (operator === "*") {
-      calc = Number(storedNumber) * Number(currentNumber);
+      calc = multiply(storedNumber, currentNumber);
     } else if (operator === "/") {
-      calc = Number(storedNumber) / Number(currentNumber);
+      calc = divide(storedNumber, currentNumber);
     }
     screen.innerText = calc;
     storedNumber = calc;
@@ -77,24 +77,20 @@ function handleOperator(opr) {
 }
 
 // Functions to handle operations
-function handleSum() {
-  let calculation = Number(storedNumber) + Number(currentNumber);
-  screen.innerHTML = calculation;
+function add(storedNumber, currentNumber) {
+  return Number(storedNumber) + Number(currentNumber);
 }
 
-function handleSubtract() {
-  let calculation = Number(storedNumber) - Number(currentNumber);
-  screen.innerHTML = calculation;
+function subtract(storedNumber, currentNumber) {
+  return Number(storedNumber) - Number(currentNumber);
 }
 
-function handleMultiplication() {
-  let calculation = Number(storedNumber) * Number(currentNumber);
-  screen.innerHTML = calculation;
+function multiply(storedNumber, currentNumber) {
+  return Number(storedNumber) * Number(currentNumber);
 }
 
-function handleDivide() {
-  let calculation = Number(storedNumber) / Number(currentNumber);
-  screen.innerText = calculation;
+function divide(storedNumber, currentNumber) {
+  return Number(storedNumber) / Number(currentNumber);
 }
 
 // Get ENTER button
@@ -103,19 +99,19 @@ const enterBTN = document.querySelector("#enter");
 // Add interaction to ENTER BTN
 enterBTN.addEventListener("click", () => {
   if (operator === "+") {
-    handleSum();
+    add(storedNumber, currentNumber);
     clearStoredNumbers();
   } else if (operator === "-") {
-    handleSubtract();
+    subtract(storedNumber, currentNumber);
     clearStoredNumbers();
   } else if (operator === "*") {
-    handleMultiplication();
+    multiply(storedNumber, currentNumber);
     clearStoredNumbers();
   } else if (operator === "/" && currentNumber === "0") {
     screen.innerText = "ERROR: Cannot divide by 0";
     clearStoredNumbers();
   } else if (operator === "/") {
-    handleDivide();
+    divide(storedNumber, currentNumber);
     clearStoredNumbers();
   }
   isDecimalPointEntered = false;
