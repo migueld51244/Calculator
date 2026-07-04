@@ -4,6 +4,7 @@ let isResultDisplayed = false;
 let operator = "";
 let isDecimalPointEntered = false;
 let firstTimeOpr = true;
+const screen = document.querySelector(".screen");
 
 // Get numbers
 document.getElementById("zero").addEventListener("click", () => getNum("0"));
@@ -20,13 +21,13 @@ document.getElementById("nine").addEventListener("click", () => getNum("9"));
 function getNum(num) {
   isResultDisplayed = false;
   currentNumber += num;
-  document.querySelector(".screen").innerText += num;
+  screen.innerText += num;
   return Number(currentNumber);
 }
 
 // Clear Screen
 document.querySelector("#clear").addEventListener("click", () => {
-  document.querySelector(".screen").innerHTML = "";
+  screen.innerHTML = "";
   clearStoredNumbers();
 });
 
@@ -54,7 +55,7 @@ function handleOperator(opr) {
     storedNumber = currentNumber;
     operator = opr;
     currentNumber = "";
-    document.querySelector(".screen").innerText += opr;
+    screen.innerText += opr;
   } else if (operator !== "" && currentNumber !== "") {
     if (operator === "+") {
       calc = Number(storedNumber) + Number(currentNumber);
@@ -65,11 +66,11 @@ function handleOperator(opr) {
     } else if (operator === "/") {
       calc = Number(storedNumber) / Number(currentNumber);
     }
-    document.querySelector(".screen").innerText = calc;
+    screen.innerText = calc;
     storedNumber = calc;
     operator = opr;
     currentNumber = "";
-    document.querySelector(".screen").innerText += opr;
+    screen.innerText += opr;
   } else if (operator !== "" && currentNumber === "") {
     operator = opr;
   }
@@ -78,22 +79,22 @@ function handleOperator(opr) {
 // Functions to handle operations
 function handleSum() {
   let calculation = Number(storedNumber) + Number(currentNumber);
-  document.querySelector(".screen").innerHTML = calculation;
+  screen.innerHTML = calculation;
 }
 
 function handleSubtract() {
   let calculation = Number(storedNumber) - Number(currentNumber);
-  document.querySelector(".screen").innerHTML = calculation;
+  screen.innerHTML = calculation;
 }
 
 function handleMultiplication() {
   let calculation = Number(storedNumber) * Number(currentNumber);
-  document.querySelector(".screen").innerHTML = calculation;
+  screen.innerHTML = calculation;
 }
 
 function handleDivide() {
   let calculation = Number(storedNumber) / Number(currentNumber);
-  document.querySelector(".screen").innerText = calculation;
+  screen.innerText = calculation;
 }
 
 // Get ENTER button
@@ -111,7 +112,7 @@ enterBTN.addEventListener("click", () => {
     handleMultiplication();
     clearStoredNumbers();
   } else if (operator === "/" && currentNumber === "0") {
-    document.querySelector(".screen").innerText = "ERROR: Cannot divide by 0";
+    screen.innerText = "ERROR: Cannot divide by 0";
     clearStoredNumbers();
   } else if (operator === "/") {
     handleDivide();
@@ -120,7 +121,7 @@ enterBTN.addEventListener("click", () => {
   isDecimalPointEntered = false;
   isResultDisplayed = true;
   firstTimeOpr = true;
-  let result = document.querySelector(".screen").innerText;
+  let result = screen.innerText;
   storedNumber = result;
 });
 
@@ -136,20 +137,20 @@ document.getElementById("dot").addEventListener("click", () => {
     return;
   } else {
     isDecimalPointEntered = true;
-    document.querySelector(".screen").innerText += ".";
+    screen.innerText += ".";
     currentNumber += ".";
   }
 });
 
 // Code to handle delete button
 document.getElementById("delete").addEventListener("click", () => {
-  let screenContent = document.querySelector(".screen").innerText;
+  let screenContent = screen.innerText;
 
   let lastChar = screenContent[screenContent.length - 1];
 
   if (isResultDisplayed === true) {
     isResultDisplayed = false;
-    document.querySelector(".screen").innerText = "";
+    screen.innerText = "";
     clearStoredNumbers();
   } else if (lastChar === ".") {
     isDecimalPointEntered = false;
@@ -171,6 +172,6 @@ document.getElementById("delete").addEventListener("click", () => {
 });
 
 function removeItemFromScreen() {
-  let currentText = document.querySelector(".screen").innerText;
-  document.querySelector(".screen").innerText = currentText.slice(0, -1);
+  let currentText = screen.innerText;
+  screen.innerText = currentText.slice(0, -1);
 }
