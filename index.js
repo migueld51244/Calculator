@@ -112,30 +112,33 @@ const enterBTN = document.querySelector("#enter");
 // Add interaction to ENTER BTN
 enterBTN.addEventListener("click", () => {
   if (operator === "+") {
-    add(storedNumber, currentNumber);
-    clearStoredNumbers();
+    let result = operate("+", storedNumber, currentNumber);
+    screen.innerText = result;
+    storedNumber = result;
   } else if (operator === "-") {
-    subtract(storedNumber, currentNumber);
-    clearStoredNumbers();
+    let result = operate("-", storedNumber, currentNumber);
+    screen.innerText = result;
+    storedNumber = result;
   } else if (operator === "*") {
-    multiply(storedNumber, currentNumber);
-    clearStoredNumbers();
+    let result = operate("*", storedNumber, currentNumber);
+    screen.innerText = result;
+    storedNumber = result;
   } else if (operator === "/" && currentNumber === "0") {
-    screen.innerText = "ERROR: Cannot divide by 0";
+    let result = operate("/", storedNumber, currentNumber);
+    screen.innerText = result;
     clearStoredNumbers();
   } else if (operator === "/") {
-    divide(storedNumber, currentNumber);
-    clearStoredNumbers();
+    let result = operate("/", storedNumber, currentNumber);
+    screen.innerText = result;
+    storedNumber = result;
   }
   isDecimalPointEntered = false;
   isResultDisplayed = true;
   firstTimeOpr = true;
-  let result = screen.innerText;
-  storedNumber = result;
 });
 
 function clearStoredNumbers() {
-  storedNumber = "";
+  //storedNumber = "";
   operator = "";
   currentNumber = "";
 }
