@@ -54,15 +54,25 @@ document.getElementById("divide").addEventListener("click", () => {
 });
 
 function roundedNum(num) {
+  // Return if not number
+  if(typeof num !== 'number') {
+    return num;
+  }
   let rounding;
   let treatedResult = num.toString();
   let dotIndex = treatedResult.indexOf(".");
-  if(treatedResult.length - dotIndex >= 8) {
-    rounding = Number(num.toFixed(8));
-  } else {
-    return;
+  // If there is no dot, return
+  if(dotIndex === -1) {
+    return num;
   }
-  return rounding;
+
+  // Count decimal places
+  let decimalPlaces = treatedResult.length - dotIndex - 1;
+  if(decimalPlaces >= 8) {
+    return Number(num.toFixed(8));
+  } else {
+    return num;
+  }
 }
 
 function handleOperator(opr) {
@@ -137,25 +147,24 @@ function operate(operator, a, b) {
   }
 }
 
-roundResult();
 // Add interaction to ENTER BTN
 enterBTN.addEventListener("click", () => {
   errorHandler();
   if (operator === "+") {
     result = operate("+", storedNumber, currentNumber);
-    roundResult();
+    result = roundedNum(result);
     screen.innerText = result;
     storedNumber = result;
     clearOprAndCurrentNum();
   } else if (operator === "-") {
     result = operate("-", storedNumber, currentNumber);
-    roundResult();
+    result = roundedNum(result);
     screen.innerText = result;
     storedNumber = result;
     clearOprAndCurrentNum();
   } else if (operator === "*") {
     result = operate("*", storedNumber, currentNumber);
-    roundResult();
+    result = roundedNum(result);
     screen.innerText = result;
     storedNumber = result;
     clearOprAndCurrentNum();
@@ -165,7 +174,7 @@ enterBTN.addEventListener("click", () => {
     clearStoredNumbers();
   } else if (operator === "/") {
     result = operate("/", storedNumber, currentNumber);
-    roundResult();
+    result = roundedNum(result);
     screen.innerText = result;
     storedNumber = result;
     clearOprAndCurrentNum();
@@ -177,15 +186,6 @@ enterBTN.addEventListener("click", () => {
     firstTimeOpr = true;
   }
 });
-
-  // Code to round long decimals
-function roundResult() {
-  let treatedResult = result.toString();
-  let dotIndex = treatedResult.indexOf(".");
-  if(treatedResult.length - dotIndex >= 8) {
-    result = Number(result.toFixed(8));
-  }
-}
 
 function clearStoredNumbers() {
   storedNumber = "";
