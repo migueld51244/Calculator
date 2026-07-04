@@ -101,6 +101,7 @@ function handleOperator(opr) {
     screen.innerText += opr;
   } else if (operator !== "" && currentNumber === "") {
     operator = opr;
+    screen.innerText += operator;
   }
 }
 
