@@ -5,7 +5,9 @@ let operator = "";
 let isDecimalPointEntered = false;
 let firstTimeOpr = true;
 let isErrorDisplayed = false;
+let result = "";
 const screen = document.querySelector(".screen");
+const enterBTN = document.querySelector("#enter");
 
 // Get numbers
 document.getElementById("zero").addEventListener("click", () => getNum("0"));
@@ -51,6 +53,18 @@ document.getElementById("divide").addEventListener("click", () => {
   isDecimalPointEntered = false;
 });
 
+function roundedNum(num) {
+  let rounding;
+  let treatedResult = num.toString();
+  let dotIndex = treatedResult.indexOf(".");
+  if(treatedResult.length - dotIndex >= 8) {
+    rounding = Number(num.toFixed(8));
+  } else {
+    return;
+  }
+  return rounding;
+}
+
 function handleOperator(opr) {
   errorHandler();
   let calc;
@@ -69,6 +83,7 @@ function handleOperator(opr) {
     } else if (operator === "/") {
       calc = divide(storedNumber, currentNumber);
     }
+    calc = roundedNum(calc);
     screen.innerText = calc;
     storedNumber = calc;
     operator = opr;
@@ -122,43 +137,55 @@ function operate(operator, a, b) {
   }
 }
 
-// Get ENTER button
-const enterBTN = document.querySelector("#enter");
-
+roundResult();
 // Add interaction to ENTER BTN
 enterBTN.addEventListener("click", () => {
   errorHandler();
   if (operator === "+") {
-    let result = operate("+", storedNumber, currentNumber);
+    result = operate("+", storedNumber, currentNumber);
+    roundResult();
     screen.innerText = result;
     storedNumber = result;
     clearOprAndCurrentNum();
   } else if (operator === "-") {
-    let result = operate("-", storedNumber, currentNumber);
+    result = operate("-", storedNumber, currentNumber);
+    roundResult();
     screen.innerText = result;
     storedNumber = result;
     clearOprAndCurrentNum();
   } else if (operator === "*") {
-    let result = operate("*", storedNumber, currentNumber);
+    result = operate("*", storedNumber, currentNumber);
+    roundResult();
     screen.innerText = result;
     storedNumber = result;
     clearOprAndCurrentNum();
   } else if (operator === "/" && currentNumber === "0") {
-    let result = operate("/", storedNumber, currentNumber);
+    result = operate("/", storedNumber, currentNumber);
     screen.innerText = result;
     clearStoredNumbers();
   } else if (operator === "/") {
-    let result = operate("/", storedNumber, currentNumber);
+    result = operate("/", storedNumber, currentNumber);
+    roundResult();
     screen.innerText = result;
     storedNumber = result;
     clearOprAndCurrentNum();
   }
+
   if(isErrorDisplayed === false) {
-  isDecimalPointEntered = false;
-  isResultDisplayed = true;
-  firstTimeOpr = true;
+    isDecimalPointEntered = false;
+    isResultDisplayed = true;
+    firstTimeOpr = true;
   }
 });
+
+  // Code to round long decimals
+function roundResult() {
+  let treatedResult = result.toString();
+  let dotIndex = treatedResult.indexOf(".");
+  if(treatedResult.length - dotIndex >= 8) {
+    result = Number(result.toFixed(8));
+  }
+}
 
 function clearStoredNumbers() {
   storedNumber = "";
