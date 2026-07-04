@@ -244,3 +244,21 @@ function removeItemFromScreen() {
   let currentText = screen.innerText;
   screen.innerText = currentText.slice(0, -1);
 }
+
+/*
+  Keyboard Support Section
+*/
+
+document.addEventListener("keydown", (event) => {
+  if(event.key >= "0" && event.key <= "9") {
+    getNum(event.key)
+    event.preventDefault();
+  }
+  if(event.key === ".") {
+    document.getElementById("dot").click();
+  }
+  if(event.key === "enter") {
+    document.getElementById("enterBTN").click();
+    event.preventDefault();
+  }
+})
