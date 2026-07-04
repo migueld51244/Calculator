@@ -55,20 +55,20 @@ document.getElementById("divide").addEventListener("click", () => {
 
 function roundedNum(num) {
   // Return if not number
-  if(typeof num !== 'number') {
+  if (typeof num !== "number") {
     return num;
   }
   let rounding;
   let treatedResult = num.toString();
   let dotIndex = treatedResult.indexOf(".");
   // If there is no dot, return
-  if(dotIndex === -1) {
+  if (dotIndex === -1) {
     return num;
   }
 
   // Count decimal places
   let decimalPlaces = treatedResult.length - dotIndex - 1;
-  if(decimalPlaces >= 8) {
+  if (decimalPlaces >= 8) {
     return Number(num.toFixed(8));
   } else {
     return num;
@@ -119,31 +119,31 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  if(Number(b) === 0) {
+  if (Number(b) === 0) {
     isErrorDisplayed = true;
-    return 'ERROR: Cannot divide by 0';
+    return "ERROR: Cannot divide by 0";
   }
   return Number(a) / Number(b);
 }
 
 // Error handler
 function errorHandler() {
-  if(isErrorDisplayed === true) {
-  // Clears all
-  clearStoredNumbers();
-  screen.innerText = "";
+  if (isErrorDisplayed === true) {
+    // Clears all
+    clearStoredNumbers();
+    screen.innerText = "";
   }
   isErrorDisplayed = false;
 }
 
 function operate(operator, a, b) {
-  if(operator === "+") {
+  if (operator === "+") {
     return add(a, b);
-  } else if(operator === "-") {
+  } else if (operator === "-") {
     return subtract(a, b);
-  } else if(operator === "*") {
+  } else if (operator === "*") {
     return multiply(a, b);
-  } else if(operator === "/") {
+  } else if (operator === "/") {
     return divide(a, b);
   }
 }
@@ -181,7 +181,7 @@ enterBTN.addEventListener("click", () => {
     clearOprAndCurrentNum();
   }
 
-  if(isErrorDisplayed === false) {
+  if (isErrorDisplayed === false) {
     isDecimalPointEntered = false;
     isResultDisplayed = true;
     firstTimeOpr = true;
@@ -251,33 +251,33 @@ function removeItemFromScreen() {
 */
 
 document.addEventListener("keydown", (event) => {
-  if(event.key >= "0" && event.key <= "9") {
-    getNum(event.key)
+  if (event.key >= "0" && event.key <= "9") {
+    getNum(event.key);
     event.preventDefault();
   }
-  if(event.key === ".") {
+  if (event.key === ".") {
     document.getElementById("dot").click();
   }
-  if(event.key === "Enter" || event.key === "=") {
+  if (event.key === "Enter" || event.key === "=") {
     document.getElementById("enter").click();
     event.preventDefault();
   }
-  if(event.key === "+") {
+  if (event.key === "+") {
     document.getElementById("plus").click();
   }
-  if(event.key === "-") {
-  document.getElementById("minus").click();
+  if (event.key === "-") {
+    document.getElementById("minus").click();
   }
-  if(event.key === "*" || event.code === "NumpadMultiply") {
-  document.getElementById("times").click();
+  if (event.key === "*" || event.code === "NumpadMultiply") {
+    document.getElementById("times").click();
   }
-  if(event.key === "/") {
-  document.getElementById("divide").click();
+  if (event.key === "/") {
+    document.getElementById("divide").click();
   }
-  if(event.key === "Backspace") {
+  if (event.key === "Backspace") {
     document.getElementById("delete").click();
   }
-  if(event.key === "Escape") {
+  if (event.key === "Escape") {
     document.getElementById("clear").click();
   }
-})
+});
