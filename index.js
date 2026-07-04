@@ -257,8 +257,26 @@ document.addEventListener("keydown", (event) => {
   if(event.key === ".") {
     document.getElementById("dot").click();
   }
-  if(event.key === "enter") {
-    document.getElementById("enterBTN").click();
+  if(event.key === "Enter" || event.key === "=") {
+    document.getElementById("enter").click();
     event.preventDefault();
+  }
+  if(event.key === "+") {
+    document.getElementById("plus").click();
+  }
+  if(event.key === "-") {
+  document.getElementById("minus").click();
+  }
+  if(event.key === "*" || event.code === "NumpadMultiply") {
+  document.getElementById("times").click();
+  }
+  if(event.key === "/") {
+  document.getElementById("divide").click();
+  }
+  if(event.key === "Backspace") {
+    document.getElementById("delete").click();
+  }
+  if(event.key === "Escape") {
+    document.getElementById("clear").click();
   }
 })
