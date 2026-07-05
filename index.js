@@ -9,13 +9,13 @@ const screen = document.querySelector(".screen");
 const enterBTN = document.querySelector("#enter");
 
 // Get numbers
-document.querySelectorAll(".numbers-pad button").forEach(button => {
+document.querySelectorAll(".numbers-pad button").forEach((button) => {
   button.addEventListener("click", () => getNum(button.textContent));
-})
+});
 
 function getNum(num) {
   errorHandler();
-  if(isResultDisplayed === true) {
+  if (isResultDisplayed === true) {
     clearStoredNumbers();
     screen.innerText = "";
   }
@@ -150,24 +150,24 @@ enterBTN.addEventListener("click", () => {
   errorHandler();
   isDecimalPointEntered = false;
   // Check if expression is complete
-  if(!storedNumber || !operator || !currentNumber) return;
+  if (!storedNumber || !operator || !currentNumber) return;
 
   // Perform calculation
-  result = operate(operator, storedNumber, currentNumber) ;
+  result = operate(operator, storedNumber, currentNumber);
 
   // Handle division by 0
-  if(result === "ERROR: Cannot divide by 0") {
+  if (result === "ERROR: Cannot divide by 0") {
     screen.innerText = result;
     clearStoredNumbers();
     isErrorDisplayed = true;
-    return
+    return;
   }
 
   // Round result handler
   result = roundedNum(result);
   screen.innerText = result;
   storedNumber = result;
-  clearOprAndCurrentNum()
+  clearOprAndCurrentNum();
 
   if (isErrorDisplayed === false) {
     isDecimalPointEntered = false;
