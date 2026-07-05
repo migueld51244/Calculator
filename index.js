@@ -10,7 +10,7 @@ const enterBTN = document.querySelector("#enter");
 
 // Get numbers
 document.querySelectorAll(".numbers-pad button").forEach(button => {
-  document.addEventListener("click", () => getNum(button.textContent));
+  button.addEventListener("click", () => getNum(button.textContent));
 })
 
 function getNum(num) {
