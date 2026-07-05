@@ -3,7 +3,6 @@ let storedNumber = "";
 let isResultDisplayed = false;
 let operator = "";
 let isDecimalPointEntered = false;
-let firstTimeOpr = true;
 let isErrorDisplayed = false;
 let result = "";
 const screen = document.querySelector(".screen");
@@ -62,7 +61,6 @@ function roundedNum(num) {
   if (typeof num !== "number") {
     return num;
   }
-  let rounding;
   let treatedResult = num.toString();
   let dotIndex = treatedResult.indexOf(".");
   // If there is no dot, return
@@ -157,35 +155,26 @@ function operate(operator, a, b) {
 // Add interaction to ENTER BTN
 enterBTN.addEventListener("click", () => {
   errorHandler();
-  if (operator === "+") {
-    result = operate("+", storedNumber, currentNumber);
-    result = roundedNum(result);
-    screen.innerText = result;
-    storedNumber = result;
-    clearOprAndCurrentNum();
-  } else if (operator === "-") {
-    result = operate("-", storedNumber, currentNumber);
-    result = roundedNum(result);
-    screen.innerText = result;
-    storedNumber = result;
-    clearOprAndCurrentNum();
-  } else if (operator === "*") {
-    result = operate("*", storedNumber, currentNumber);
-    result = roundedNum(result);
-    screen.innerText = result;
-    storedNumber = result;
-    clearOprAndCurrentNum();
-  } else if (operator === "/" && currentNumber === "0") {
-    result = operate("/", storedNumber, currentNumber);
+
+  // Check if expression is complete
+  if(!storedNumber || !operator || !currentNumber) return;
+
+  // Perform calculation
+  result = operate(operator, storedNumber, currentNumber) ;
+
+  // Handle division by 0
+  if(result === "ERROR: Cannot divide by 0") {
     screen.innerText = result;
     clearStoredNumbers();
-  } else if (operator === "/") {
-    result = operate("/", storedNumber, currentNumber);
-    result = roundedNum(result);
-    screen.innerText = result;
-    storedNumber = result;
-    clearOprAndCurrentNum();
+    isErrorDisplayed = true;
+    return
   }
+
+  // Round result handler
+  result = roundedNum(result);
+  screen.innerText = result;
+  storedNumber = result;
+  clearOprAndCurrentNum()
 
   if (isErrorDisplayed === false) {
     isDecimalPointEntered = false;
