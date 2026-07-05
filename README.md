@@ -1,6 +1,6 @@
 # Calculator Web App (Work in Progress)
 
-A functional calculator web application built with HTML, CSS, and JavaScript. Currently supports basic arithmetic operations with a clean, intuitive interface.
+A fully functional calculator built with **HTML, CSS, and JavaScript** as part of **The Odin Project Foundations** curriculum. The application supports chained calculations, decimal numbers, keyboard input, backspace functionality, and robust error handling while maintaining a clean and responsive interface.
 
 ## 🚀 Live Demo
 
@@ -12,25 +12,49 @@ Check out the live version: [Calculator Demo](https://migueld51244.github.io/Cal
 
 ## ✨ Features
 
-### Currently Working
-- Basic arithmetic operations (addition, subtraction, multiplication, division)
-- Multi-digit number input
-- Real-time display updates
-- Clear functionality
-- Chain calculations (e.g., 12 + 7 - 1 = 18)
-
-### In Development
-- Decimal point support
-- Backspace/delete functionality
-- Keyboard support
-- Error handling (division by zero)
-- Responsive design
+* ➕ Addition, ➖ subtraction, ✖️ multiplication, and ➗ division
+* Multi-digit number input
+* Decimal number support
+* Chained calculations (e.g. `12 + 7 - 1 = 18`)
+* Keyboard support
+* Backspace/Delete functionality
+* Clear button to reset the calculator
+* Prevents invalid consecutive operator evaluations
+* Starts a new calculation automatically after displaying a result
+* Graceful division-by-zero error handling
+* Automatic rounding of long decimal results
 
 ## 🛠️ Technologies Used
 
 - HTML5 - Structure
 - CSS3 - Styling
 - JavaScript (ES6) - Application logic
+
+## ⌨️ Keyboard Shortcuts
+
+| Key        | Action                |
+| ---------- | --------------------- |
+| 0–9        | Enter numbers         |
+| +          | Addition              |
+| -          | Subtraction           |
+| *          | Multiplication        |
+| /          | Division              |
+| .          | Decimal point         |
+| Enter or = | Calculate             |
+| Backspace  | Delete last character |
+| Escape     | Clear calculator      |
+
+## 🎯 Project Goals
+
+This project was built to practice:
+
+* DOM manipulation
+* Event handling
+* State management
+* JavaScript functions
+* Application logic
+* Keyboard event handling
+* Debugging and edge-case handling
 
 ## 🎯 How It Works
 
@@ -72,18 +96,30 @@ No build tools or dependencies required!
 ## 🤝 Contributing
 Found a bug or want to suggest a feature? Please open an issue on the [Issues Tab](https://github.com/migueld51244/Calculator/issues).
 
-## 📝 Future Improvements
-* Decimal point support
-* Backspace/delete button
-* Keyboard shortcuts
-* Division by zero error handling
-* Responsive mobile design
+
+## 💡 What I Learned
+
+Building this project helped reinforce several important JavaScript concepts:
+
+* Managing application state
+* Separating logic into reusable functions
+* Handling user input from both mouse and keyboard
+* Working with edge cases (division by zero, invalid expressions, repeated operators)
+* Refactoring code to reduce duplication and improve readability
+
+## 🔮 Possible Future Improvements
+
+* Responsive mobile layout
+* Scientific calculator functions
 * Calculation history
-* Percentage button
+* Percentage and sign toggle buttons
+* Themes (light/dark mode)
 
-## 💖 Support
-If you find this project helpful or interesting, consider supporting my learning journey!
+## 📚 Acknowledgements
 
+This project was completed as part of **The Odin Project Foundations** curriculum.
+
+https://www.theodinproject.com/
 
 ## 📚 Learning Journey
 This project is part of my journey learning JavaScript through The Odin Project. Building this calculator helped me understand:
@@ -98,5 +134,17 @@ This project is part of my journey learning JavaScript through The Odin Project.
 
 * Function composition
 
+## 💖 Support
+If you find this project helpful or interesting, consider supporting my learning journey!
 
-### This is a work in progress - more features coming soon!
+## 📄 License
+This project is open source and available under the MIT License.
+
+
+
+
+
+
+
+
+
