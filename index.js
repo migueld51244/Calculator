@@ -155,7 +155,7 @@ function operate(operator, a, b) {
 // Add interaction to ENTER BTN
 enterBTN.addEventListener("click", () => {
   errorHandler();
-
+  isDecimalPointEntered = false;
   // Check if expression is complete
   if(!storedNumber || !operator || !currentNumber) return;
 
@@ -184,6 +184,7 @@ enterBTN.addEventListener("click", () => {
 });
 
 function clearStoredNumbers() {
+  isDecimalPointEntered = false;
   storedNumber = "";
   operator = "";
   currentNumber = "";
