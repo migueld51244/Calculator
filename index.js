@@ -9,9 +9,11 @@ const screen = document.querySelector(".screen");
 const enterBTN = document.querySelector("#enter");
 
 // Get numbers
-document.querySelectorAll(".numbers-pad button").forEach((button) => {
-  button.addEventListener("click", () => getNum(button.textContent));
-});
+document
+  .querySelectorAll(".numbers-pad button:not(#dot):not(#enter)")
+  .forEach((button) => {
+    button.addEventListener("click", () => getNum(button.textContent));
+  });
 
 function getNum(num) {
   errorHandler();
@@ -74,7 +76,9 @@ function handleOperator(opr) {
   errorHandler();
   let calc;
   if (operator === "") {
-    storedNumber = currentNumber;
+    if (storedNumber === "") {
+      storedNumber = currentNumber;
+    }
     operator = opr;
     currentNumber = "";
     screen.innerText += opr;
@@ -134,14 +138,17 @@ function errorHandler() {
 }
 
 function operate(operator, a, b) {
-  if (operator === "+") {
-    return add(a, b);
-  } else if (operator === "-") {
-    return subtract(a, b);
-  } else if (operator === "*") {
-    return multiply(a, b);
-  } else if (operator === "/") {
-    return divide(a, b);
+  switch (operator) {
+    case "+":
+      return add(a, b);
+    case "-":
+      return subtract(a, b);
+    case "*":
+      return multiply(a, b);
+    case "/":
+      return divide(a, b);
+    default:
+      return "Error: Invalid Operator";
   }
 }
 
@@ -172,7 +179,6 @@ enterBTN.addEventListener("click", () => {
   if (isErrorDisplayed === false) {
     isDecimalPointEntered = false;
     isResultDisplayed = true;
-    firstTimeOpr = true;
   }
 });
 
