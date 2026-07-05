@@ -104,6 +104,8 @@ function handleOperator(opr) {
     currentNumber = "";
     screen.innerText += opr;
   } else if (operator !== "" && currentNumber === "") {
+    let swapOpr = screen.innerText.slice(0, -1);
+    screen.innerText = swapOpr;
     operator = opr;
     screen.innerText += operator;
   }
