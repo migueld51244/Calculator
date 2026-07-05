@@ -23,6 +23,10 @@ document.getElementById("nine").addEventListener("click", () => getNum("9"));
 
 function getNum(num) {
   errorHandler();
+  if(isResultDisplayed === true) {
+    clearStoredNumbers();
+    screen.innerText = "";
+  }
   isResultDisplayed = false;
   currentNumber += num;
   screen.innerText += num;
