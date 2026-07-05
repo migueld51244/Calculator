@@ -1,4 +1,4 @@
-# Calculator Web App (Work in Progress)
+# Calculator Web App
 
 A fully functional calculator built with **HTML, CSS, and JavaScript** as part of **The Odin Project Foundations** curriculum. The application supports chained calculations, decimal numbers, keyboard input, backspace functionality, and robust error handling while maintaining a clean and responsive interface.
 
